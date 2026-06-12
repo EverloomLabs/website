@@ -184,7 +184,7 @@
     align-items: center;
     border-top: 0.5px solid var(--border-subtle);
     top: 520px; opacity: 0;
-    transition: top 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.5s ease;
+    transition: top 0.2s cubic-bezier(0.4,0,0.2,1), opacity 0.15s ease;
     cursor: pointer;
   }
   .service-slide.is-prev  { top: 0;    opacity: 0.28; }
@@ -585,7 +585,7 @@
 
     function startTimer() {
       clearInterval(timer);
-      timer = setInterval(() => goTo(cur + 1), 4500);
+      timer = setInterval(() => goTo(cur + 1), 1750);
     }
 
     // Click prev/next slides to navigate
