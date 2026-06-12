@@ -84,9 +84,9 @@
     pointer-events: none;
   }
   .hero-logo {
-    height: 160px; width: auto;
+    height: 340px; width: auto;
     margin-bottom: 0.5rem;
-    filter: drop-shadow(0 0 32px rgba(123,79,191,0.35));
+    filter: drop-shadow(0 0 48px rgba(123,79,191,0.45));
   }
   .hero-eyebrow {
     font-size: 0.75rem; font-weight: 500; letter-spacing: 0.2em;
@@ -200,6 +200,23 @@
     display: flex; align-items: center; justify-content: center;
     margin-bottom: 1.25rem; font-size: 1.1rem;
   }
+  .service-card-header {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    margin-bottom: 0.6rem;
+  }
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.75rem; font-weight: 300;
+    color: rgba(176,141,224,0.4);
+    letter-spacing: 0.12em;
+    line-height: 1.6;
+  }
+  .service-arrow {
+    font-size: 0.85rem; color: var(--amethyst-light);
+    opacity: 0; transform: translateX(-6px);
+    transition: opacity 0.25s, transform 0.25s;
+  }
+  .service-card:hover .service-arrow { opacity: 1; transform: translateX(0); }
   .service-name {
     font-size: 1rem; font-weight: 500;
     margin-bottom: 0.6rem; letter-spacing: 0.01em;
@@ -376,32 +393,50 @@
   <div class="services-grid">
     <div class="service-card">
       <div class="service-icon">⚡</div>
-      <div class="service-name">AI Integration</div>
+      <div class="service-card-header">
+        <div class="service-name">AI Integration</div>
+        <span class="service-num">01 <span class="service-arrow">→</span></span>
+      </div>
       <p class="service-desc">Connect AI into your existing tools, workflows, and systems — without rebuilding from scratch.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">💬</div>
-      <div class="service-name">AI Chatbot</div>
+      <div class="service-card-header">
+        <div class="service-name">AI Chatbot</div>
+        <span class="service-num">02 <span class="service-arrow">→</span></span>
+      </div>
       <p class="service-desc">Deploy intelligent chatbots that handle support, qualify leads, and engage customers 24/7.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">🗂️</div>
-      <div class="service-name">RAG Systems</div>
+      <div class="service-card-header">
+        <div class="service-name">RAG Systems</div>
+        <span class="service-num">03 <span class="service-arrow">→</span></span>
+      </div>
       <p class="service-desc">Give your AI a brain built on your data — retrieval-augmented generation for accurate, contextual answers.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">🤖</div>
-      <div class="service-name">Agentic AI</div>
+      <div class="service-card-header">
+        <div class="service-name">Agentic AI</div>
+        <span class="service-num">04 <span class="service-arrow">→</span></span>
+      </div>
       <p class="service-desc">Autonomous AI agents that plan, execute, and complete multi-step tasks with minimal human intervention.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">✍️</div>
-      <div class="service-name">AI Content Creation</div>
+      <div class="service-card-header">
+        <div class="service-name">AI Content Creation</div>
+        <span class="service-num">05 <span class="service-arrow">→</span></span>
+      </div>
       <p class="service-desc">High-converting ads, social content, and marketing copy — generated at scale, tuned to your brand voice.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">📈</div>
-      <div class="service-name">Growth Consulting</div>
+      <div class="service-card-header">
+        <div class="service-name">Growth Consulting</div>
+        <span class="service-num">06 <span class="service-arrow">→</span></span>
+      </div>
       <p class="service-desc">Strategic guidance on where and how AI can drive the biggest impact in your specific business model.</p>
     </div>
   </div>
