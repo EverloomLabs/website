@@ -372,6 +372,16 @@
     cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.2s;
   }
   .cta-form button:hover { background: var(--amethyst-pale); }
+  .contact-email {
+    margin-top: 1.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.4);
+    letter-spacing: 0.02em;
+  }
+  .contact-email a {
+    color: var(--amethyst-pale); text-decoration: none;
+    border-bottom: 0.5px solid rgba(196,164,238,0.35);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .contact-email a:hover { color: var(--white); border-color: rgba(255,255,255,0.5); }
 
   /* FOOTER */
   footer {
@@ -634,6 +644,7 @@
     </form>
   </div>
   <p id="form-msg" style="margin-top:1rem;font-size:0.85rem;min-height:1.2em;"></p>
+  <p class="contact-email">Or reach us directly at <a href="mailto:everloomlabs@gmail.com">everloomlabs@gmail.com</a></p>
 </section>
 
 <script>
@@ -689,6 +700,7 @@
     <a href="#services">Services</a>
     <a href="#process">Process</a>
     <a href="#contact">Contact</a>
+    <a href="mailto:everloomlabs@gmail.com">everloomlabs@gmail.com</a>
   </div>
 </footer>
 
