@@ -47,8 +47,10 @@
     font-size: 1.5rem; font-weight: 600;
     letter-spacing: 0.04em;
     color: var(--white);
+    display: flex; align-items: center; gap: 0.5rem;
   }
   .nav-logo span { color: var(--amethyst-light); }
+  .nav-logo-img { height: 38px; width: auto; flex-shrink: 0; }
   .nav-links { display: flex; gap: 2rem; align-items: center; }
   .nav-links a {
     font-size: 0.85rem; font-weight: 400; letter-spacing: 0.06em;
@@ -80,6 +82,11 @@
     width: 700px; height: 700px; border-radius: 50%;
     background: radial-gradient(ellipse, rgba(123,79,191,0.18) 0%, transparent 70%);
     pointer-events: none;
+  }
+  .hero-logo {
+    height: 160px; width: auto;
+    margin-bottom: 0.5rem;
+    filter: drop-shadow(0 0 32px rgba(123,79,191,0.35));
   }
   .hero-eyebrow {
     font-size: 0.75rem; font-weight: 500; letter-spacing: 0.2em;
@@ -295,8 +302,10 @@
   .footer-logo {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.1rem; font-weight: 600; color: var(--white);
+    display: flex; align-items: center; gap: 0.5rem;
   }
   .footer-logo span { color: var(--amethyst-light); }
+  .footer-logo-img { height: 32px; width: auto; flex-shrink: 0; }
   .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
   .footer-links { display: flex; gap: 1.5rem; }
   .footer-links a { font-size: 0.78rem; color: rgba(255,255,255,0.35); text-decoration: none; }
@@ -314,7 +323,10 @@
 <body>
 
 <nav>
-  <div class="nav-logo">Everloom<span> Labs</span></div>
+  <div class="nav-logo">
+    <img src="assets/everloom_labs_transparent.svg" alt="" class="nav-logo-img" />
+    Everloom<span> Labs</span>
+  </div>
   <div class="nav-links">
     <a href="#services">Services</a>
     <a href="#process">Process</a>
@@ -324,6 +336,7 @@
 </nav>
 
 <section class="hero">
+  <img src="assets/everloom_labs_transparent.svg" alt="Everloom Labs" class="hero-logo" />
   <div class="hero-eyebrow">AI Growth Agency</div>
   <h1 class="hero-headline">
     We grow businesses<br>through the power of <em>intelligent AI</em>
@@ -506,7 +519,10 @@
 </script>
 
 <footer>
-  <div class="footer-logo">Everloom<span> Labs</span></div>
+  <div class="footer-logo">
+    <img src="assets/everloom_labs_transparent.svg" alt="" class="footer-logo-img" />
+    Everloom<span> Labs</span>
+  </div>
   <div class="footer-copy">&copy; 2026 Everloom Labs. All rights reserved.</div>
   <div class="footer-links">
     <a href="#services">Services</a>
