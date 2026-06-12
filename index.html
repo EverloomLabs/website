@@ -482,15 +482,15 @@
     btn.disabled = true;
 
     try {
-      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email })
       });
 
       if (res.ok) {
         msg.style.color = 'rgba(176,141,224,0.9)';
-        msg.textContent = "You're in — we'll be in touch shortly.";
+        msg.textContent = "You’re in — we’ll be in touch shortly.";
         document.getElementById('lead-email').value = '';
         btn.textContent = 'Sent';
       } else {
@@ -499,7 +499,7 @@
     } catch (_) {
       msg.style.color = 'rgba(255,100,100,0.8)';
       msg.textContent = 'Something went wrong. Please try again.';
-      btn.textContent = "Let's Talk";
+      btn.textContent = "Let’s Talk";
       btn.disabled = false;
     }
   });
@@ -507,7 +507,7 @@
 
 <footer>
   <div class="footer-logo">Everloom<span> Labs</span></div>
-  <div class="footer-copy">© 2025 Everloom Labs. All rights reserved.</div>
+  <div class="footer-copy">&copy; 2026 Everloom Labs. All rights reserved.</div>
   <div class="footer-links">
     <a href="#services">Services</a>
     <a href="#process">Process</a>
