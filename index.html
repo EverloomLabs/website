@@ -84,15 +84,29 @@
     background: radial-gradient(ellipse, rgba(123,79,191,0.18) 0%, transparent 70%);
     pointer-events: none;
   }
+  .hero-logo-wrap {
+    display: flex; flex-direction: column; align-items: center;
+    margin-bottom: 2.5rem;
+  }
   .hero-logo {
-    height: 340px; width: auto;
-    margin-bottom: 0.5rem;
+    height: 260px; width: auto;
     filter: drop-shadow(0 0 48px rgba(123,79,191,0.45));
+  }
+  .hero-wordmark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.1rem; font-weight: 600; letter-spacing: 0.14em;
+    color: var(--white); text-transform: uppercase;
+    margin-top: -0.5rem; line-height: 1;
+  }
+  .hero-wordmark span {
+    display: block; text-align: center;
+    font-size: 0.65em; font-weight: 300; letter-spacing: 0.3em;
+    color: var(--amethyst-light); margin-top: 0.3rem;
   }
   .hero-eyebrow {
     font-size: 0.75rem; font-weight: 500; letter-spacing: 0.2em;
     text-transform: uppercase; color: var(--amethyst-light);
-    margin-bottom: 1.5rem;
+    margin-bottom: 2.5rem;
     display: flex; align-items: center; gap: 0.75rem;
   }
   .hero-eyebrow::before, .hero-eyebrow::after {
@@ -101,7 +115,7 @@
   }
   .hero-headline {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3rem, 7vw, 5.5rem);
+    font-size: clamp(2.4rem, 5.5vw, 4.2rem);
     font-weight: 300; line-height: 1.08;
     letter-spacing: -0.01em;
     max-width: 820px;
@@ -407,7 +421,10 @@
 </nav>
 
 <section class="hero">
-  <img src="assets/everloom_labs_transparent.svg" alt="Everloom Labs" class="hero-logo" />
+  <div class="hero-logo-wrap">
+    <img src="assets/everloom_labs_transparent.svg" alt="Everloom Labs" class="hero-logo" />
+    <div class="hero-wordmark">Everloom<span>Labs</span></div>
+  </div>
   <div class="hero-eyebrow">AI Growth Agency</div>
   <h1 class="hero-headline">
     We grow businesses<br>through the power of <em>intelligent AI</em>
