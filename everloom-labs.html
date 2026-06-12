@@ -464,11 +464,46 @@
   <div class="section-label">Get Started</div>
   <h2 class="section-title">Ready to grow with <em>AI?</em></h2>
   <p class="cta-sub">Drop your email and we'll reach out to schedule a free discovery call — no pressure, no pitch deck.</p>
-  <div class="cta-form">
-    <input type="email" placeholder="your@email.com" />
-    <button type="button">Let's Talk</button>
-  </div>
+  <form class="cta-form" id="lead-form">
+    <input type="email" id="lead-email" placeholder="your@email.com" required />
+    <button type="submit" id="lead-btn">Let's Talk</button>
+  </form>
+  <p id="form-msg" style="margin-top:1rem;font-size:0.85rem;min-height:1.2em;"></p>
 </section>
+
+<script>
+  document.getElementById('lead-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const email = document.getElementById('lead-email').value;
+    const btn = document.getElementById('lead-btn');
+    const msg = document.getElementById('form-msg');
+
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+
+    try {
+      const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+      });
+
+      if (res.ok) {
+        msg.style.color = 'rgba(176,141,224,0.9)';
+        msg.textContent = "You're in — we'll be in touch shortly.";
+        document.getElementById('lead-email').value = '';
+        btn.textContent = 'Sent';
+      } else {
+        throw new Error();
+      }
+    } catch (_) {
+      msg.style.color = 'rgba(255,100,100,0.8)';
+      msg.textContent = 'Something went wrong. Please try again.';
+      btn.textContent = "Let's Talk";
+      btn.disabled = false;
+    }
+  });
+</script>
 
 <footer>
   <div class="footer-logo">Everloom<span> Labs</span></div>
