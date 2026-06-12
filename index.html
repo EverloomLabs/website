@@ -271,6 +271,40 @@
     background: var(--amethyst-light); margin-top: 0.55rem; flex-shrink: 0;
   }
 
+  /* FAQ */
+  #faq { background: var(--black); }
+  .faq-list { margin-top: 3.5rem; max-width: 680px; }
+  .faq-item { border-top: 0.5px solid var(--border-subtle); }
+  .faq-item:last-child { border-bottom: 0.5px solid var(--border-subtle); }
+  .faq-q {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 2rem; padding: 1.5rem 0;
+    cursor: pointer; user-select: none;
+    font-size: 0.95rem; font-weight: 500; color: var(--white);
+    background: none; border: none; width: 100%; text-align: left;
+    font-family: 'Inter', sans-serif;
+  }
+  .faq-q:hover { color: var(--amethyst-pale); }
+  .faq-icon {
+    width: 18px; height: 18px; flex-shrink: 0;
+    position: relative; color: var(--amethyst-light);
+    transition: color 0.3s;
+  }
+  .faq-icon::before, .faq-icon::after {
+    content: ''; position: absolute; background: currentColor;
+    border-radius: 1px;
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.3s;
+  }
+  .faq-icon::before { width: 12px; height: 1px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+  .faq-icon::after  { width: 1px; height: 12px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+  .faq-item.open .faq-icon::after { transform: translate(-50%,-50%) scaleY(0); opacity: 0; }
+  .faq-a {
+    font-size: 0.875rem; color: rgba(255,255,255,0.5);
+    line-height: 1.8; overflow: hidden; max-height: 0;
+    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding-bottom 0.3s;
+  }
+  .faq-item.open .faq-a { max-height: 220px; padding-bottom: 1.5rem; }
+
   /* CTA */
   #contact {
     background: var(--amethyst-deep);
@@ -494,6 +528,62 @@
   </div>
 </section>
 
+<section id="faq">
+  <div class="section-label">Questions</div>
+  <h2 class="section-title">Everything you might<br>want to <em>know</em></h2>
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-q">
+        How quickly can we get started?
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-a">Most engagements kick off within a week of our discovery call. We scope fast, build fast, and aim to have something live in your business within two weeks of alignment — not months.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        Do I need to be technical to work with you?
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-a">Not at all. We handle every layer — strategy, build, and integration. You describe the business problem, we figure out the AI solution. No jargon, no technical overhead on your end.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        What does an engagement typically cost?
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-a">Every project is scoped to your specific needs, so we don't publish fixed prices. What we can promise: no bloated retainers, no surprise invoices. We'll give you a clear number after our first call — before you commit to anything.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        Will this work for my industry?
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-a">AI works wherever there's repetition, communication, or data — which means most industries. Whether you're in e-commerce, professional services, real estate, or SaaS, we'll map the right solution to your specific workflow.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        Do you replace our existing tools or work alongside them?
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-a">We integrate into what you already use. CRM, helpdesk, website, communication tools — we build around your stack, not instead of it. No ripping and replacing what already works.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q">
+        What happens after launch?
+        <span class="faq-icon"></span>
+      </button>
+      <div class="faq-a">We stay on. AI systems improve with use and feedback, and we monitor, tune, and iterate post-launch so your results compound over time rather than plateau on day one.</div>
+    </div>
+
+  </div>
+</section>
+
 <section id="contact">
   <div class="section-label">Get Started</div>
   <h2 class="section-title">Ready to grow with <em>AI?</em></h2>
@@ -506,6 +596,15 @@
 </section>
 
 <script>
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
   document.getElementById('lead-form').addEventListener('submit', async function(e) {
     e.preventDefault();
     const email = document.getElementById('lead-email').value;
