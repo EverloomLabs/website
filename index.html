@@ -339,20 +339,6 @@
     position: relative; display: inline-flex;
     max-width: 480px; width: 100%; margin: 0 auto;
   }
-  .cta-ripple {
-    position: absolute; inset: -2px; z-index: 0;
-    border-radius: 52% 48% 50% 50% / 42% 54% 46% 58%;
-    border: 1px solid rgba(176,141,224,0.52);
-    animation: cta-ripple 5.5s ease-out infinite;
-    pointer-events: none;
-  }
-  .cta-ripple:nth-child(2) { animation-delay: 1.83s; }
-  .cta-ripple:nth-child(3) { animation-delay: 3.66s; }
-  @keyframes cta-ripple {
-    0%   { transform: scale(0.88); opacity: 0; }
-    15%  { opacity: 0.5; }
-    100% { transform: scale(1.7);  opacity: 0; }
-  }
   .cta-form {
     position: relative; z-index: 1;
     display: flex; flex-direction: column; gap: 0.65rem; width: 100%;
@@ -667,9 +653,6 @@
   <h2 class="section-title">Ready to grow with <em>AI?</em></h2>
   <p class="cta-sub">Drop your email and we'll reach out to schedule a free discovery call — no pressure, no pitch deck.</p>
   <div class="cta-form-wrap">
-    <span class="cta-ripple"></span>
-    <span class="cta-ripple"></span>
-    <span class="cta-ripple"></span>
     <form class="cta-form" id="lead-form">
       <div class="cta-field">
         <label for="lead-email">Email</label>
@@ -679,7 +662,7 @@
         <label for="lead-message">Your message</label>
         <textarea id="lead-message" placeholder="Tell us about your business and what you'd like to achieve with AI. We'll tailor our response accordingly."></textarea>
       </div>
-      <button type="submit" id="lead-btn">Let's Talk</button>
+      <button type="button" id="lead-btn">Let's Talk</button>
     </form>
   </div>
   <p id="form-msg" style="margin-top:1rem;font-size:0.85rem;min-height:1.2em;"></p>
