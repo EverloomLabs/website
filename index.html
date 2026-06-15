@@ -670,17 +670,18 @@
 </section>
 
 <script>
-  document.querySelectorAll('.faq-q').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.closest('.faq-item');
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
+  document.querySelectorAll(‘.faq-q’).forEach(btn => {
+    btn.addEventListener(‘click’, () => {
+      const item = btn.closest(‘.faq-item’);
+      const isOpen = item.classList.contains(‘open’);
+      document.querySelectorAll(‘.faq-item’).forEach(i => i.classList.remove(‘open’));
+      if (!isOpen) item.classList.add(‘open’);
     });
   });
+</script>
 
+<script>
   window.submitLead = async function() {
-    console.log(‘submitLead called’);
     const email = document.getElementById(‘lead-email’).value.trim();
     const message = document.getElementById(‘lead-message’).value.trim();
     const btn = document.getElementById(‘lead-btn’);
@@ -719,7 +720,7 @@
       btn.textContent = "Let’s Talk";
       btn.disabled = false;
     }
-  }
+  };
 </script>
 
 <footer>
