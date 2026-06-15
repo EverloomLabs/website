@@ -662,7 +662,7 @@
         <label for="lead-message">Your message</label>
         <textarea id="lead-message" placeholder="Tell us about your business and what you'd like to achieve with AI. We'll tailor our response accordingly."></textarea>
       </div>
-      <button type="button" id="lead-btn" onclick="alert('clicked'); submitLead()">Let's Talk</button>
+      <button type="button" id="lead-btn" onclick="submitLead()">Let's Talk</button>
     </form>
   </div>
   <p id="form-msg" style="margin-top:1rem;font-size:0.85rem;min-height:1.2em;"></p>
@@ -679,7 +679,7 @@
     });
   });
 
-  async function submitLead() {
+  window.submitLead = async function() {
     console.log(‘submitLead called’);
     const email = document.getElementById(‘lead-email’).value.trim();
     const message = document.getElementById(‘lead-message’).value.trim();
