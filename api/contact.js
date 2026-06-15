@@ -1,6 +1,8 @@
 const nodemailer = require('nodemailer');
 
 module.exports = async function handler(req, res) {
+  console.log('contact handler fired', req.method, JSON.stringify(req.body));
+
   if (req.method !== 'POST') {
     return res.status(405).end();
   }
