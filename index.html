@@ -659,7 +659,7 @@
     <form class="cta-form" id="lead-form">
       <div class="cta-field">
         <label for="lead-email">Email</label>
-        <input type="email" id="lead-email" placeholder="your@email.com" required />
+        <input type="email" id="lead-email" placeholder="your@email.com" />
       </div>
       <div class="cta-field">
         <label for="lead-message">Your message</label>
@@ -682,15 +682,21 @@
     });
   });
 
-  document.getElementById('lead-form').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const email = document.getElementById(‘lead-email’).value;
-    const message = document.getElementById(‘lead-message’).value;
+  document.getElementById(‘lead-btn’).addEventListener(‘click’, async function() {
+    const email = document.getElementById(‘lead-email’).value.trim();
+    const message = document.getElementById(‘lead-message’).value.trim();
     const btn = document.getElementById(‘lead-btn’);
     const msg = document.getElementById(‘form-msg’);
 
+    if (!email || !email.includes(‘@’)) {
+      msg.style.color = ‘rgba(255,100,100,0.8)’;
+      msg.textContent = ‘Please enter a valid email address.’;
+      return;
+    }
+
     btn.textContent = ‘Sending…’;
     btn.disabled = true;
+    msg.textContent = ‘’;
 
     try {
       const res = await fetch(‘/api/contact’, {
@@ -709,8 +715,8 @@
         throw new Error();
       }
     } catch (_) {
-      msg.style.color = 'rgba(255,100,100,0.8)';
-      msg.textContent = 'Something went wrong. Please try again.';
+      msg.style.color = ‘rgba(255,100,100,0.8)’;
+      msg.textContent = ‘Something went wrong. Please try again.’;
       btn.textContent = "Let’s Talk";
       btn.disabled = false;
     }
