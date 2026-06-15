@@ -337,7 +337,7 @@
   .cta-sub { font-size: 1rem; color: rgba(255,255,255,0.6); margin: 1rem auto 2.5rem; max-width: 460px; }
   .cta-form-wrap {
     position: relative; display: inline-flex;
-    max-width: 440px; width: 100%; margin: 0 auto;
+    max-width: 480px; width: 100%; margin: 0 auto;
   }
   .cta-ripple {
     position: absolute; inset: -2px; z-index: 0;
@@ -353,17 +353,23 @@
     15%  { opacity: 0.5; }
     100% { transform: scale(1.7);  opacity: 0; }
   }
-  .cta-form { position: relative; z-index: 1; }
   .cta-form {
-    display: flex; gap: 0; width: 100%;
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column; gap: 0; width: 100%;
     border: 0.5px solid rgba(255,255,255,0.25); border-radius: 2px; overflow: hidden;
   }
-  .cta-form input {
-    flex: 1; padding: 0.9rem 1.25rem;
-    background: rgba(255,255,255,0.07); border: none; outline: none;
-    color: var(--white); font-size: 0.875rem; font-family: 'Inter', sans-serif;
+  .cta-form input,
+  .cta-form textarea {
+    width: 100%; padding: 0.9rem 1.25rem;
+    background: rgba(255,255,255,0.07); border: none; border-bottom: 0.5px solid rgba(255,255,255,0.12);
+    outline: none; color: var(--white); font-size: 0.875rem; font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
   }
-  .cta-form input::placeholder { color: rgba(255,255,255,0.35); }
+  .cta-form textarea {
+    resize: none; height: 110px; line-height: 1.55;
+  }
+  .cta-form input::placeholder,
+  .cta-form textarea::placeholder { color: rgba(255,255,255,0.35); }
   .cta-form button {
     padding: 0.9rem 1.5rem;
     background: var(--white); color: var(--amethyst-deep);
@@ -642,6 +648,7 @@
     <span class="cta-ripple"></span>
     <form class="cta-form" id="lead-form">
       <input type="email" id="lead-email" placeholder="your@email.com" required />
+      <textarea id="lead-message" placeholder="Tell us about your business and what you'd like to achieve with AI — we'll tailor our response accordingly."></textarea>
       <button type="submit" id="lead-btn">Let's Talk</button>
     </form>
   </div>
@@ -661,25 +668,27 @@
 
   document.getElementById('lead-form').addEventListener('submit', async function(e) {
     e.preventDefault();
-    const email = document.getElementById('lead-email').value;
-    const btn = document.getElementById('lead-btn');
-    const msg = document.getElementById('form-msg');
+    const email = document.getElementById(‘lead-email’).value;
+    const message = document.getElementById(‘lead-message’).value;
+    const btn = document.getElementById(‘lead-btn’);
+    const msg = document.getElementById(‘form-msg’);
 
-    btn.textContent = 'Sending…';
+    btn.textContent = ‘Sending…’;
     btn.disabled = true;
 
     try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email })
+      const res = await fetch(‘/api/contact’, {
+        method: ‘POST’,
+        headers: { ‘Content-Type’: ‘application/json’ },
+        body: JSON.stringify({ email, message })
       });
 
       if (res.ok) {
-        msg.style.color = 'rgba(176,141,224,0.9)';
+        msg.style.color = ‘rgba(176,141,224,0.9)’;
         msg.textContent = "You’re in — we’ll be in touch shortly.";
-        document.getElementById('lead-email').value = '';
-        btn.textContent = 'Sent';
+        document.getElementById(‘lead-email’).value = ‘’;
+        document.getElementById(‘lead-message’).value = ‘’;
+        btn.textContent = ‘Sent’;
       } else {
         throw new Error();
       }
